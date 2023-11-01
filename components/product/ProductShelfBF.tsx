@@ -1,9 +1,8 @@
 import { SendEventOnLoad } from "$store/components/Analytics.tsx";
 import ProductCard, {
   Layout as cardLayout,
-} from "$store/components/product/ProductCard.tsx";
+} from "$store/components/product/ProductCardBF.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
-import Header from "$store/components/ui/SectionHeader.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
@@ -57,20 +56,19 @@ function ProductShelf({
 
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="container max-w-[1280px] grid grid-cols-[48px_1fr_48px] px-3 sm:px-5"
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <Slider class="md:carousel md:carousel-end inline-flex overflow-x-scroll snap-mandatory scroll-smooth gap-1 md:gap-6 col-span-full row-start-2 row-end-5 scrollbar pb-4 lg:pb-0">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="carousel-item w-[175px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}
                 itemListName={title}
                 layout={cardLayout}
                 platform={platform}
-                index={index}
               />
             </Slider.Item>
           ))}
