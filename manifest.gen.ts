@@ -39,8 +39,9 @@ import * as $$$$$$31 from "./sections/Product/ProductShelfTabbed.tsx";
 import * as $$$$$$32 from "./sections/Product/SearchResult.tsx";
 import * as $$$$$$33 from "./sections/Product/Wishlist.tsx";
 import * as $$$$$$34 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$35 from "./sections/Social/WhatsApp.tsx";
-import * as $$$$$$36 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$35 from "./sections/Social/LiveChat.tsx";
+import * as $$$$$$36 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$37 from "./sections/Theme/Theme.tsx";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -91,8 +92,9 @@ const manifest = {
     "deco-sites/easycoders-hack/sections/Product/SearchResult.tsx": $$$$$$32,
     "deco-sites/easycoders-hack/sections/Product/Wishlist.tsx": $$$$$$33,
     "deco-sites/easycoders-hack/sections/Social/InstagramPosts.tsx": $$$$$$34,
-    "deco-sites/easycoders-hack/sections/Social/WhatsApp.tsx": $$$$$$35,
-    "deco-sites/easycoders-hack/sections/Theme/Theme.tsx": $$$$$$36,
+    "deco-sites/easycoders-hack/sections/Social/LiveChat.tsx": $$$$$$35,
+    "deco-sites/easycoders-hack/sections/Social/WhatsApp.tsx": $$$$$$36,
+    "deco-sites/easycoders-hack/sections/Theme/Theme.tsx": $$$$$$37,
   },
   "apps": {
     "deco-sites/easycoders-hack/apps/decohub.ts": $$$$$$$$$$$0,
