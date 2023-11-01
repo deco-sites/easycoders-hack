@@ -1,7 +1,6 @@
 import Image from "apps/website/components/Image.tsx";
 import type { HTMLWidget } from "apps/admin/widgets.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts"; 
-
 export interface Props{
     title?: HTMLWidget;
     subTitle?: HTMLWidget;
