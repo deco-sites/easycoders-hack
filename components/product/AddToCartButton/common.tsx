@@ -64,7 +64,7 @@ export default function AddToCartButton(props: Props) {
 
   return (
     <Button {...btnProps} data-deco="add-to-cart" class="btn-primary">
-      Adicionar à Sacola
+      Comprar
     </Button>
   );
 }
