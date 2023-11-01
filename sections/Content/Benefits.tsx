@@ -22,7 +22,7 @@ export default function Images(
     images = [],
   } = props;
   return (
-    <div class="flex flex-col items-center justify-center w-full container max-w-[1240px] py-5">
+    <div class="flex flex-col items-center justify-center w-full container max-w-[1240px] py-5 px-4">
       <div class="flex flex-col items-center justify-center gap-2 w-full">
         <h1
           dangerouslySetInnerHTML={{
@@ -36,7 +36,7 @@ export default function Images(
           }}
         />
       </div>
-      <div class="flex flex-wrap w-full gap-4 justify-between items-center mt-6">
+      <div class="flex flex-wrap w-full gap-4 justify-center md:justify-between items-center mt-6">
         {images?.map((item) => (
           <div class="flex flex-col gap-2 items-center justify-center">
             <Image

@@ -3,6 +3,7 @@ import CampaignTimer, {
 } from "$store/components/ui/CampaignTimer.tsx";
 import { forwardRef } from "preact/compat";
 import type { JSX } from "preact";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 
 export type InputProps =
   & JSX.IntrinsicElements["input"]
@@ -12,6 +13,7 @@ export type InputProps =
   };
 
 export interface Props {
+  backgroundImage: ImageWidget;
   campaignTimer: CampaignProps;
 }
 
@@ -43,10 +45,12 @@ function SubmitButton() {
   );
 }
 
-export default function CampaignHero({ campaignTimer }: Props) {
+export default function CampaignHero(
+  { campaignTimer, backgroundImage }: Props,
+) {
   return (
     <section
-      style={`background-image: url('https://i.pinimg.com/originals/71/72/69/7172693062dfdf53798b0857ebc1d6d3.gif');`}
+      style={`background-image: url(${backgroundImage});`}
       class="w-full h-full bg-center object-cover bg-opacity-80 border-b border-b-gray-200/40"
     >
       <div class="flex flex-col justify-between items-center container mx-auto max-w-[1240px] gap-12 w-full py-12 px-4 xl:px-0 text-white">
