@@ -17,7 +17,7 @@ export interface Props {
 
 export default function LPCategoryCards({ title, subTitle, cards }: Props) {
   return (
-    <div class="w-full h-[420px]">
+    <div class="w-full h-full">
       <section class="w-full h-full flex flex-col items-center justify-center">
         <div class="w-full text-center mt-4">
           <h1
