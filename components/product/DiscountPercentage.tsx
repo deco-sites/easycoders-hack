@@ -11,7 +11,7 @@ const Discount = ({ price, listPrice }: Props) => {
   const discountPercentage = Math.ceil(discountValue * 100 / listPrice);
 
   return (
-    <span class="indicator-item indicator-start badge badge-primary border-none text-white bg-red-500 absolute left-1 top-6 lg:top-10 z-30 rounded-md text-xs lg:text-normal">
+    <span class="indicator-item indicator-start badge badge-primary border-none text-white bg-red-500 absolute left-1 top-2 z-30 rounded-md text-xs lg:text-normal">
       {discountPercentage}% OFF
     </span>
   );

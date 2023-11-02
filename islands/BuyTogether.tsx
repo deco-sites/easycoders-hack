@@ -5,7 +5,7 @@ import { formatPrice } from "$store/sdk/format.ts";
 import SuggestionCard from "$store/components/product/ProductSuggestions.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Button from "$store/components/ui/Button.tsx";
-// import useAddToCart from "$store/actions/addToCart.ts";
+import useAddToCart from "$store/actions/addToCart.ts";
 
 import { useState } from "preact/compat";
 
@@ -15,7 +15,67 @@ export interface Props {
 
 export default function Matcher({ suggestions }: Props) {
   const [isChecked, setIsChecked] = useState(true);
-  // const { seller } = useOffer(product.offers);
+
+  const firstProduct = suggestions[0];
+  const secondProduct = suggestions[1];
+  const { seller } = useOffer(firstProduct.offers);
+
+  const definitiveListPrice =
+    firstProduct.offers?.offers[0].priceSpecification[0].price;
+  const definitivePrice =
+    firstProduct.offers?.offers[0].priceSpecification[1].price;
+
+  const {
+    offers,
+  } = secondProduct;
+
+  const { seller: secondSeller } = useOffer(offers);
+
+  const secondListPrice =
+    secondProduct.offers?.offers[0].priceSpecification[0].price;
+  const secondPrice =
+    secondProduct.offers?.offers[0].priceSpecification[1].price;
+
+  const items = useAddToCart({
+    items: isChecked
+      ? [
+        {
+          skuId: firstProduct.productID,
+          sellerId: seller!,
+          price: definitivePrice ?? 0,
+          discount: definitivePrice && definitiveListPrice
+            ? definitiveListPrice - definitivePrice
+            : 0,
+          name: firstProduct.name ?? "",
+          quantity: 1,
+          productGroupId: firstProduct.isVariantOf?.productGroupID ?? "",
+        },
+        {
+          skuId: secondProduct.productID,
+          sellerId: secondSeller!,
+          price: secondPrice ?? 0,
+          discount: secondPrice && secondListPrice
+            ? secondListPrice - secondPrice
+            : 0,
+          name: secondProduct.name ?? "",
+          quantity: 1,
+          productGroupId: secondProduct.isVariantOf?.productGroupID ?? "",
+        },
+      ]
+      : [
+        {
+          skuId: firstProduct.productID,
+          sellerId: seller!,
+          price: definitivePrice ?? 0,
+          discount: definitivePrice && definitiveListPrice
+            ? definitiveListPrice - definitivePrice
+            : 0,
+          name: firstProduct.name ?? "",
+          quantity: 1,
+          productGroupId: firstProduct.isVariantOf?.productGroupID ?? "",
+        },
+      ],
+  });
 
   return (
     <div class="flex flex-col lg:flex-row items-center justify-start w-full lg:gap-8 mb-8">
@@ -44,13 +104,20 @@ export default function Matcher({ suggestions }: Props) {
           {isChecked ? "Compre os 2 produtos por:" : "Compre um 1 produto por:"}
         </p>
         <span class="font-bold leading-[22px]">
-          1222,00
+          {formatPrice(
+            (definitivePrice ?? 0) + (isChecked ? (secondPrice ?? 0) : 0),
+            offers!.priceCurrency!,
+          )}
         </span>
         <span class="flex">
           <div class="text-sm leading-[22px]">
-            ou{"  "}<span class="font-bold text-lg">8x</span>{"  "}de{"  "}
+            ou até{"  "}<span class="font-bold text-lg">8x</span>{"  "}de{"  "}
             <span class="font-bold text-lg">
-              1222,00
+              {formatPrice(
+                ((definitivePrice ?? 0) +
+                  (isChecked ? (secondPrice ?? 0) : 0)) / 8,
+                offers!.priceCurrency!,
+              )}
             </span>{"  "}
             s/juros
           </div>
@@ -59,6 +126,7 @@ export default function Matcher({ suggestions }: Props) {
           ? (
             <Button
               data-deco="add-to-cart"
+              {...items}
               class="w-full h-[41px] min-h-min bg-emerald-500 hover:bg-emerald-400 text-white text-sm border-transparent hover:border-transparent rounded-md mt-2"
             >
               COMPRAR JUNTO
@@ -67,6 +135,7 @@ export default function Matcher({ suggestions }: Props) {
           : (
             <Button
               data-deco="add-to-cart"
+              {...items}
               class="w-full h-[41px] min-h-min bg-emerald-500 hover:bg-emerald-400 text-white text-sm border-transparent hover:border-transparent rounded-md mt-2"
             >
               COMPRAR ÚNICO

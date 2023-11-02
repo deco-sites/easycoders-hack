@@ -45,6 +45,7 @@ import * as $$$$$$37 from "./sections/Social/LiveChat.tsx";
 import * as $$$$$$38 from "./sections/Social/Oli.tsx";
 import * as $$$$$$39 from "./sections/Social/WhatsApp.tsx";
 import * as $$$$$$40 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$$$$0 from "./actions/addToCart.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -101,6 +102,9 @@ const manifest = {
     "deco-sites/easycoders-hack/sections/Social/Oli.tsx": $$$$$$38,
     "deco-sites/easycoders-hack/sections/Social/WhatsApp.tsx": $$$$$$39,
     "deco-sites/easycoders-hack/sections/Theme/Theme.tsx": $$$$$$40,
+  },
+  "actions": {
+    "deco-sites/easycoders-hack/actions/addToCart.ts": $$$$$$$$$0,
   },
   "apps": {
     "deco-sites/easycoders-hack/apps/decohub.ts": $$$$$$$$$$$0,
