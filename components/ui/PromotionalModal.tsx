@@ -104,7 +104,7 @@ export default function PromotionalModal({
 
           <aside class="w-1/2 rounded-r-lg">
             {backgroundImage && (
-              <Image
+              <img
                 src={backgroundImage.image}
                 alt={backgroundImage.description}
                 width={backgroundImage.width || 500}

@@ -9,5 +9,7 @@ export const loader = (props: Props, req: Request) => {
     ? false
     : Boolean(!cookies["DecoPromotionalModal"]);
 
+  if (!isOpen) return null;
+
   return { ...props, isOpen };
 };
