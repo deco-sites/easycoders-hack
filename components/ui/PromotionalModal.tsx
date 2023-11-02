@@ -89,7 +89,7 @@ export default function PromotionalModal({
         >
           <aside
             style={{ color: textColor }}
-            class="flex flex-col items-center justify-center text-center w-full px-2.5 gap-2.5"
+            class="flex flex-col items-center justify-center text-center w-1/2 px-2.5 gap-2.5"
           >
             <h1 class="tracking-widest leading-tight text-xl font-bold [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
               {title}
@@ -102,7 +102,7 @@ export default function PromotionalModal({
             />
           </aside>
 
-          <aside class="w-full rounded-r-lg">
+          <aside class="w-1/2 rounded-r-lg">
             {backgroundImage && (
               <Image
                 src={backgroundImage.image}
@@ -110,7 +110,7 @@ export default function PromotionalModal({
                 width={backgroundImage.width || 500}
                 height={backgroundImage.height || 500}
                 class="rounded-r-md"
-                loading="lazy"
+                loading="eager"
               />
             )}
           </aside>
