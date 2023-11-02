@@ -1,5 +1,3 @@
-import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
-import Header from "$store/components/ui/SectionHeader.tsx";
 import type { HTMLWidget, ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 
@@ -22,7 +20,7 @@ export default function Images(
     images = [],
   } = props;
   return (
-    <div class="flex flex-col items-center justify-center w-full container max-w-[1240px] py-5 px-4">
+    <section class="flex flex-col items-center justify-center w-full container max-w-[1240px] py-5 px-4">
       <div class="flex flex-col items-center justify-center gap-2 w-full">
         <h1
           class="text-center px-4"
@@ -54,6 +52,6 @@ export default function Images(
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
