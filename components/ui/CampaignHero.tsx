@@ -62,7 +62,7 @@ export default function CampaignHero(
             </span>
             <div class="text-4xl sm:text-6xl font-bold tracking-wide leading-tight">
               <h1>VANTAGENS</h1>
-              <h1 class="text-primary">EXCLUSIVAS!</h1>
+              <h1 class="text-yellow-400">EXCLUSIVAS!</h1>
             </div>
           </div>
 
