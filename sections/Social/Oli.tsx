@@ -13,7 +13,7 @@ export default function Oli({ oliId }: Props) {
   return (
     <>
       <script
-        defer
+        async
         src="https://sdk.oli.video/oli-sdk.js"
       />
       <script
