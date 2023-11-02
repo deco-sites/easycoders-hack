@@ -25,6 +25,7 @@ export default function Images(
     <div class="flex flex-col items-center justify-center w-full container max-w-[1240px] py-5 px-4">
       <div class="flex flex-col items-center justify-center gap-2 w-full">
         <h1
+          class="text-center px-4"
           dangerouslySetInnerHTML={{
             __html: title || "",
           }}
@@ -36,7 +37,7 @@ export default function Images(
           }}
         />
       </div>
-      <div class="flex flex-wrap w-full gap-4 justify-center md:justify-between items-center mt-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-center md:justify-between items-center mt-6">
         {images?.map((item) => (
           <div class="flex flex-col gap-2 items-center justify-center">
             <Image
