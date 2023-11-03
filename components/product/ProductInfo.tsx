@@ -11,9 +11,10 @@ import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
-import { ProductDetailsPage } from "apps/commerce/types.ts";
+import { ProductDetailsPage, Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductVariantSelector.tsx";
+import BuyAndWin from "$store/components/ui/BuyAndWin.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -25,9 +26,17 @@ interface Props {
      */
     name?: "concat" | "productGroup" | "product";
   };
+  hasProductGift?: {
+    title: string;
+    /**
+     * @default true
+     */
+    isExpandedWidth?: boolean;
+    product: Product;
+  }
 }
 
-function ProductInfo({ page, layout }: Props) {
+function ProductInfo({ page, layout, hasProductGift }: Props) {
   const platform = usePlatform();
 
   if (page === null) {
@@ -196,6 +205,16 @@ function ProductInfo({ page, layout }: Props) {
             </details>
           )}
         </span>
+      </div>
+      <div class="mt-4 sm:mt-6">
+        <BuyAndWin
+          title="Compre o produto e também receba inteiramente grátis o produto ao lado"
+          gift={{
+            image: "https://bravtexfashionstore.vteximg.com.br/arquivos/ids/155544/Cinza_Mens_Coat_2.H03-min.png?v=637662932890570000",
+            link: "/casaco-masculino-gray/p?skuId=66",
+          }}
+          isExpandedWidth={true}
+        />
       </div>
       {/* Analytics Event */}
       <SendEventOnLoad

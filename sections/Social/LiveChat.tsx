@@ -64,7 +64,7 @@ export default function LiveChat({
         gdpr-enabled="true"
         message-userinfo-format="both"
         message-dateformat="both"
-        lang="browser"
+        lang="pt-br"
         button-icon-type="doublebubble"
         authentication-message={authenticationMessage ||
           "Olá, Tudo bem? Envie-nos uma mensagem sobre sua dúvida para que possamos responder."}

@@ -40,6 +40,23 @@
   }
 }
 
+@layer utilities {
+  .polygon-clip {
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+  }
+
+  .spin-wheel-shadow {
+    box-shadow: 0 0 0 5px #333, 0 0 0 15px #fff, 0 0 0 18px #111,
+  }
+
+  .spin-wheel-number {
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    background: var(--clr);
+    clip-path: polygon(0 0, 56% 0, 100% 100%, 0 56%);
+  }
+}
+
 .group:disabled .group-disabled\:animate-progress {
   animation: progress-frame ease normal
 }
