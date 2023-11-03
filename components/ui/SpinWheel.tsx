@@ -16,9 +16,12 @@ export interface Props {
    * @title Set the roulette values. Max: 8
    */
   spinValues: SpinProps[];
+  failedMessage?: string;
 }
 
-export default function SpinWheel({ title, subtitle, spinValues }: Props) {
+export default function SpinWheel(
+  { title, subtitle, spinValues, failedMessage }: Props,
+) {
   function handleSpin() {
     if (IS_BROWSER) {
       const wheel = document.getElementById("wheel")!;
@@ -41,20 +44,17 @@ export default function SpinWheel({ title, subtitle, spinValues }: Props) {
 
       const stoppedNumber = spinWheelNumber.textContent;
 
-      const couponMap: Record<string, string> = {
-        "0": "Opa, não foi dessa vez. Tente novamente mais tarde",
-        "50": "CUPOM50",
-        "60": "CUPOM60",
-        "100": "CUPOM100",
-      };
-
       spinWheelResult.innerText = "Girando...";
 
       setTimeout(() => {
         if (stoppedNumber) {
-          const textReturnned = couponMap[stoppedNumber] ||
-            "Opa, não foi dessa vez. Tente novamente mais tarde";
-          spinWheelResult.innerText = textReturnned;
+          const foundValue = spinValues.find((item) =>
+            item.value === stoppedNumber
+          );
+          const textReturned = foundValue
+            ? foundValue.result
+            : (failedMessage || "Tente novamente mais tarde :(");
+          spinWheelResult.innerText = textReturned;
         }
       }, 1000);
 
@@ -88,13 +88,13 @@ export default function SpinWheel({ title, subtitle, spinValues }: Props) {
             <h1 class="text-lg font-bold">{title}</h1>
             {subtitle && <p class="py-4">{subtitle}</p>}
 
-            <div class="w-[400px] h-[400px] relative flex items-center justify-center">
-              <div
+            <div class="w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] relative flex items-center justify-center">
+              <button
                 onClick={handleSpin}
-                class="absolute w-[60px] h-[60px] bg-white rounded-[50%] z-10 flex items-center justify-center font-semibold text-[#333] leading-[0.1em] border-4 border-solid border-[rgba(0,0,0,0.75)] cursor-pointer select-none before:absolute before:-top-[28px] before:w-5 before:h-[30px] before:bg-white before:polygon-clip"
+                class="disabled:opacity-60 absolute w-[60px] h-[60px] bg-white rounded-[50%] z-10 flex items-center justify-center font-semibold text-[#333] leading-[0.1em] border-4 border-solid border-[rgba(0,0,0,0.75)] cursor-pointer select-none before:absolute before:-top-[28px] before:w-5 before:h-[30px] before:bg-white before:polygon-clip"
               >
                 Girar
-              </div>
+              </button>
 
               <div
                 id="wheel"
