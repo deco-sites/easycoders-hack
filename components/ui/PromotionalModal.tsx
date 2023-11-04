@@ -1,6 +1,5 @@
 import Modal from "$store/components/ui/Modal.tsx";
 import LinkButton from "$store/components/ui/Buttons.tsx";
-import Image from "apps/website/components/Image.tsx";
 
 import type { ImageWidget } from "apps/admin/widgets.ts";
 
@@ -84,8 +83,10 @@ export default function PromotionalModal({
       >
         <div
           class={`${
-            invertOrder ? "flex-row-reverse" : "flex-row"
-          } flex gap-2 w-full h-full`}
+            invertOrder
+              ? "flex-col-reverse sm:flex-row-reverse"
+              : "flex-col sm:flex-row"
+          } flex gap-2 w-full h-full items-center relative`}
         >
           <aside
             style={{ color: textColor }}

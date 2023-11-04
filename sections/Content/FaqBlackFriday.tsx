@@ -54,13 +54,13 @@ const DEFAULT_PROPS = {
 
 function Question({ question, answer }: Question) {
   return (
-    <details class="collapse collapse-arrow join-item rounded-xl px-2.5 py-1 bg-[#292627]">
+    <details class="collapse collapse-arrow join-item rounded-xl px-2.5 py-1 bg-[#292627] open:border open:border-yellow-500">
       <summary class="collapse-title text-lg font-bold text-white">
         {question}
       </summary>
       <div
         class="collapse-content text-white"
-        dangerouslySetInnerHTML={{ __html: answer }}
+        dangerouslySetInnerHTML={{ __html: answer || "" }}
       />
     </details>
   );
@@ -128,8 +128,8 @@ export default function FAQ(props: Props) {
                 "items-center justify-center"
               }`}
             >
-              <h1 dangerouslySetInnerHTML={{ __html: title }} />
-              <h2 dangerouslySetInnerHTML={{ __html: description }} />
+              <h1 dangerouslySetInnerHTML={{ __html: title || "" }} />
+              <h2 dangerouslySetInnerHTML={{ __html: description || "" }} />
             </div>
 
             <div class="flex flex-col w-full gap-3">
@@ -150,8 +150,8 @@ export default function FAQ(props: Props) {
                 "items-center justify-center"
               }`}
             >
-              <h1 dangerouslySetInnerHTML={{ __html: title }} />
-              <h2 dangerouslySetInnerHTML={{ __html: description }} />
+              <h1 dangerouslySetInnerHTML={{ __html: title || "" }} />
+              <h2 dangerouslySetInnerHTML={{ __html: description || "" }} />
             </div>
           </div>
           <div class="order-2 lg:order-3 lg:row-span-2">
