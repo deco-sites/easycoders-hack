@@ -17,16 +17,44 @@ export interface Props {
    */
   spinValues: SpinProps[];
   failedMessage?: string;
+
+  /**
+   * @title Set the number of chances the user can spin
+   */
+  chances: number;
 }
 
 export default function SpinWheel(
-  { title, subtitle, spinValues, failedMessage }: Props,
+  { title, subtitle, spinValues, failedMessage, chances, isAvailable }:
+    & Props
+    & { isAvailable?: boolean },
 ) {
+  if (!isAvailable) return null;
+
+  let spin = 0;
+
+  const setCookieOnSpin = (spinValue: number) => {
+    const date = new Date();
+
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+
+    const expires = "expires=" + date.toUTCString();
+
+    document.cookie = "DecoSpinWheel" + "=" + spinValue + ";" + expires +
+      ";path=/";
+  };
+
   function handleSpin() {
     if (IS_BROWSER) {
       const wheel = document.getElementById("wheel")!;
       const spinWheelResult = document.getElementById("spin-wheel-result")!;
       let value = Math.ceil(Math.random() * 3600);
+
+      if (spin === chances) {
+        spinWheelResult.innerText =
+          `Você possui ${chances} chance(s) por dia. Tente amanhã.`;
+        return;
+      }
 
       const completeTurns = Math.floor(value / 360);
       const currentItem = (completeTurns + 1) % 8;
@@ -45,12 +73,15 @@ export default function SpinWheel(
       const stoppedNumber = spinWheelNumber.textContent;
 
       spinWheelResult.innerText = "Girando...";
+      spin++;
+      setCookieOnSpin(spin);
 
       setTimeout(() => {
         if (stoppedNumber) {
           const foundValue = spinValues.find((item) =>
             item.value === stoppedNumber
           );
+
           const textReturned = foundValue
             ? foundValue.result
             : (failedMessage || "Tente novamente mais tarde :(");
