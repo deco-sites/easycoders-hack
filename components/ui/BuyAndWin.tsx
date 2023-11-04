@@ -16,9 +16,11 @@ export default function BuyAndWin({
 }: Props) {
   return (
     <section class="w-full h-full flex items-center justify-start relative">
-      <div class="flex items-center justify-center top-0 absolute w-[65%] -translate-x-1/2 left-1/2 -translate-y-5 text-black font-semibold p-2 bg-gradient-to-r from-yellow-500 to-orange-600 shadow-inner border border-black tracking-wide leading-tight rounded">
-        Buy and Win Promotion
-      </div>
+      {!isExpandedWidth && (
+        <div class="flex items-center justify-center top-0 absolute w-[65%] -translate-x-1/2 left-1/2 -translate-y-5 text-black font-semibold p-2 bg-gradient-to-r from-yellow-500 to-orange-600 shadow-inner border border-black tracking-wide leading-tight rounded">
+          Buy and Win Promotion
+        </div>
+      )}
 
       <div
         class={`${

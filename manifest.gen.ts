@@ -2,8 +2,9 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
-import * as $$$1 from "./loaders/List/Sections.tsx";
+import * as $$$0 from "./loaders/extensions/productGifts.ts";
+import * as $$$1 from "./loaders/Layouts/ProductCard.tsx";
+import * as $$$2 from "./loaders/List/Sections.tsx";
 import * as $$$$$$0 from "./sections/Category/CategoryBanner.tsx";
 import * as $$$$$$1 from "./sections/Category/CategoryList.tsx";
 import * as $$$$$$2 from "./sections/Content/Benefits.tsx";
@@ -54,8 +55,9 @@ import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
 const manifest = {
   "loaders": {
-    "deco-sites/easycoders-hack/loaders/Layouts/ProductCard.tsx": $$$0,
-    "deco-sites/easycoders-hack/loaders/List/Sections.tsx": $$$1,
+    "deco-sites/easycoders-hack/loaders/extensions/productGifts.ts": $$$0,
+    "deco-sites/easycoders-hack/loaders/Layouts/ProductCard.tsx": $$$1,
+    "deco-sites/easycoders-hack/loaders/List/Sections.tsx": $$$2,
   },
   "sections": {
     "deco-sites/easycoders-hack/sections/Category/CategoryBanner.tsx": $$$$$$0,
