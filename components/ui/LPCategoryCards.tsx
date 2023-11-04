@@ -30,7 +30,7 @@ export default function LPCategoryCards({ title, subTitle, cards }: Props) {
             dangerouslySetInnerHTML={{ __html: subTitle || "" }}
           />
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 w-full h-full items-center justify-center gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 w-full h-full items-center justify-center gap-4 mt-4">
           {cards?.map((item) => (
             <a
               href={item.link}
