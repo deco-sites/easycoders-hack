@@ -11,13 +11,21 @@ import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
-import { ProductDetailsPage } from "apps/commerce/types.ts";
+import { Product, ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductVariantSelector.tsx";
 import BuyAndWin from "$store/components/ui/BuyAndWin.tsx";
 
+export type ProductExt = Product & {
+  gifts: Product[] | null;
+};
+
+export type ProductDetailsPageExt = Omit<ProductDetailsPage, "product"> & {
+  product: ProductExt;
+};
+
 interface Props {
-  page: ProductDetailsPage | null;
+  page: ProductDetailsPageExt | null;
   layout: {
     /**
      * @title Product Name
@@ -58,6 +66,8 @@ function ProductInfo({ page, layout }: Props) {
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
   const discount = price && listPrice ? listPrice - price : 0;
+
+  const gifts = product.gifts ?? [];
 
   return (
     <div class="flex flex-col">
@@ -198,17 +208,32 @@ function ProductInfo({ page, layout }: Props) {
           )}
         </span>
       </div>
-      <div class="mt-6">
-        <BuyAndWin
-          title="Compre o produto e também receba inteiramente grátis o produto ao lado"
-          gift={{
-            image:
-              "https://bravtexfashionstore.vteximg.com.br/arquivos/ids/155544/Cinza_Mens_Coat_2.H03-min.png?v=637662932890570000",
-            link: "/casaco-masculino-gray/p?skuId=66",
-          }}
-          isExpandedWidth={true}
-        />
-      </div>
+      {gifts && gifts[0]
+        ? (
+          <div class="mt-6">
+            <BuyAndWin
+              title="Compre o produto e também receba inteiramente grátis o produto ao lado"
+              gift={{
+                image: (gifts[0].image && gifts[0]?.image[0].url || ""),
+                link: (gifts[0].url || ""),
+              }}
+              isExpandedWidth={true}
+            />
+          </div>
+        )
+        : (
+          <div class="mt-6">
+            <BuyAndWin
+              title="Compre o produto e também receba inteiramente grátis o produto ao lado"
+              gift={{
+                image:
+                  "https://bravtexfashionstore.vteximg.com.br/arquivos/ids/155544/Cinza_Mens_Coat_2.H03-min.png?v=637662932890570000",
+                link: "/casaco-masculino-gray/p?skuId=66",
+              }}
+              isExpandedWidth={true}
+            />
+          </div>
+        )}
       {/* Analytics Event */}
       <SendEventOnLoad
         event={{
